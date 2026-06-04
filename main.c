@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
     for(int i=1; i<Ni+1; i++)
         Ti_f[i-1]=Ti_s[i];
 
-    reunir_temperaturas(Ni, Ti_f, T_global, N, MPI_COMM_WORLD);
+    MPI_Gather(Ti_f, Ni, MPI_DOUBLE, T_global, Ni, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     
 
     free(Ti_s); free(Ti_f);
